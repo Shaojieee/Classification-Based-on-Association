@@ -24,7 +24,7 @@ class Classifier:
         rules = []
 
         if len(self.sorted_CARS)==0:
-            print('No CARS from rule generator!')
+            # print('No CARS from rule generator!')
             self.rules = []
             return
         for CARS in self.sorted_CARS:
@@ -52,7 +52,7 @@ class Classifier:
         ans = df.copy()
         # Setting all to default class
         if len(self.rules)==0:
-            print('No rules!')
+            # print('No rules!')
             return None
         ans['prediction'] = self.rules[-1][1]
         for rule in self.rules:
