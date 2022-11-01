@@ -32,8 +32,8 @@ class RuleGenerator:
         frequent_variables = set([x for x in F_1.keys()])
         # print(frequent_variables)
         while len(F[k]) != 0:
-            print(self.CARS[k])
-            print(k)
+            # print(self.CARS[k])
+            # print(k)
             k += 1
             # Includes generating candidate itemset and finding frequent itemset
             F[k] = self.gen_itemset(F[k - 1], df, target_col, frequent_variables)
@@ -43,6 +43,9 @@ class RuleGenerator:
             self.CARS[k] = self.gen_rules(F[k], len_D)
             # Pruning rules
             self.CARS[k] = self.prune_rules(self.CARS[k], self.CARS[k - 1])
+            print('CARS:', k)
+            print(len(self.CARS[k]))
+            print(len(F[k]))
 
     def convert_to_rule_items(self, x, variables, class_label, len_D):
         condset = {}
