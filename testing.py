@@ -7,14 +7,18 @@ from sklearn.model_selection import train_test_split
 
 def main():
     csv_files = {
-        './data/bank_churners/clean_bank_churners.csv': 'Attrition_Flag',
-        './data/breast_w/clean_breast_w.csv': 'class',
-        './data/customer_segmentation/clean_customer_segmentation.csv': 'Segmentation',
-        './data/german/clean_german.csv': 'good/bad customer (response)',
         # './data/signs/clean_signs.csv': 'word',
         # './data/vehicle/clean_vehicle.csv': 'Type of Vehicle',
         # './data/wine/clean_wine.csv': 'Class',
-        './data/zoo/clean_zoo.csv': 'type'
+        './data/breast_w/clean_breast_w.csv': 'class',
+        './data/german/clean_german.csv': 'class',
+        './data/hepatitis/clean_hepatitis.csv': 'class',
+        './data/tic_tac_toe/clean_tic-tac-toe.csv': 'class',
+        './data/zoo/clean_zoo.csv': 'type',
+        './data/gender/gender.csv':'Gender',
+        './data/mobile/clean_mobile.csv': 'price_range',
+        './data/stroke/clean_stroke.csv': 'stroke'
+
     }
 
     for csv, target_col in csv_files.items():
