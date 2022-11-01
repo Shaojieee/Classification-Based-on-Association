@@ -5,24 +5,23 @@ import pandas as pd
 import time
 from sklearn.model_selection import train_test_split
 
+
 def main():
     csv_files = {
-        # './data/signs/clean_signs.csv': 'word',
-        # './data/vehicle/clean_vehicle.csv': 'Type of Vehicle',
-        # './data/wine/clean_wine.csv': 'Class',
+        # UCI Dataset
         './data/breast_w/clean_breast_w.csv': 'class',
         './data/german/clean_german.csv': 'class',
-        './data/hepatitis/clean_hepatitis.csv': 'class',
-        './data/tic_tac_toe/clean_tic-tac-toe.csv': 'class',
         './data/zoo/clean_zoo.csv': 'type',
-        './data/gender/gender.csv':'Gender',
+        './data/tic_tac_toe/clean_tic-tac-toe.csv': 'class',
+        './data/hepatitis/clean_hepatitis.csv': 'class',
+        # Kaggle Dataset
         './data/mobile/clean_mobile.csv': 'price_range',
-        './data/stroke/clean_stroke.csv': 'stroke'
-
+        './data/stroke/clean_stroke.csv': 'stroke',
+        './data/gender/gender.csv': 'Gender'
     }
 
     for csv, target_col in csv_files.items():
-        data = pd.read_csv(csv)
+        data = pd.read_csv(csv, index_col=0)
         train_df, test_df = train_test_split(data, test_size=0.1, random_state=42)
         start = time.time()
         rule_gen = RuleGenerator(min_sup=0.01, min_conf=0.5)
@@ -49,26 +48,26 @@ def main():
             print(f'Total Fit Time: {end-start}')
             print('==============================')
 
-        adaboost = Adaboost(T=70)
-        start = time.time()
-        adaboost.train(train_df, target_col)
-        end = time.time()
-        adaboost_train_ans = adaboost.predict(train_df)
-        adaboost_test_ans = adaboost.predict(test_df)
-        if adaboost_train_ans is not None:
-            adaboost_train_ans['correct'] = (adaboost_train_ans[target_col] == adaboost_train_ans['prediction'])
-            adaboost_test_ans['correct'] = (adaboost_test_ans[target_col] == adaboost_test_ans['prediction'])
-            print('==============================')
-            print(f'For {csv}')
-            print('ADABOOST')
-            print('Train')
-            print(adaboost_train_ans['correct'].value_counts())
-            print(f'Accuracy: {len(adaboost_train_ans[adaboost_train_ans["correct"]==True])/len(adaboost_train_ans)}')
-            print('Test')
-            print(adaboost_test_ans['correct'].value_counts())
-            print(f'Accuracy: {len(adaboost_test_ans[adaboost_test_ans["correct"] == True]) / len(adaboost_test_ans)}')
-            print(f'Total Fit Time: {end-start}')
-            print('==============================')
+        # adaboost = Adaboost(T=70)
+        # start = time.time()
+        # adaboost.train(train_df, target_col)
+        # end = time.time()
+        # adaboost_train_ans = adaboost.predict(train_df)
+        # adaboost_test_ans = adaboost.predict(test_df)
+        # if adaboost_train_ans is not None:
+        #     adaboost_train_ans['correct'] = (adaboost_train_ans[target_col] == adaboost_train_ans['prediction'])
+        #     adaboost_test_ans['correct'] = (adaboost_test_ans[target_col] == adaboost_test_ans['prediction'])
+        #     print('==============================')
+        #     print(f'For {csv}')
+        #     print('ADABOOST')
+        #     print('Train')
+        #     print(adaboost_train_ans['correct'].value_counts())
+        #     print(f'Accuracy: {len(adaboost_train_ans[adaboost_train_ans["correct"]==True])/len(adaboost_train_ans)}')
+        #     print('Test')
+        #     print(adaboost_test_ans['correct'].value_counts())
+        #     print(f'Accuracy: {len(adaboost_test_ans[adaboost_test_ans["correct"] == True]) / len(adaboost_test_ans)}')
+        #     print(f'Total Fit Time: {end-start}')
+        #     print('==============================')
 
 
 if __name__=='__main__':
