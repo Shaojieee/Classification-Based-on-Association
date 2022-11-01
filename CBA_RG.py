@@ -32,7 +32,8 @@ class RuleGenerator:
         frequent_variables = set([x for x in F_1.keys()])
         # print(frequent_variables)
         while len(F[k]) != 0:
-            # print(k)
+            print(self.CARS[k])
+            print(k)
             k += 1
             # Includes generating candidate itemset and finding frequent itemset
             F[k] = self.gen_itemset(F[k - 1], df, target_col, frequent_variables)
@@ -162,3 +163,147 @@ class RuleGenerator:
             r.pop(key)
         # print(len(r))
         return r
+#
+# class RuleGenerator:
+#     def __init__(self, min_sup=0.01, min_conf=0.5):
+#         self.min_sup = min_sup
+#         self.min_conf = min_conf
+#         self.CARS = None
+#
+#     def generate_rules(self, df, target_col):
+#         len_D = len(df)
+#         class_labels = df[target_col].unique()
+#         variables = list(df.columns)
+#         variables.remove(target_col)
+#         k = 1
+#         F_1 = {}
+#         for variable in variables:
+#             unique_values = df[variable].unique()
+#             for unique_value in unique_values:
+#                 temp = df[df[variable] == unique_value]
+#                 temp = temp[target_col].value_counts()
+#                 F_1.update(self.convert_to_rule_items(temp, {variable: unique_value}, class_labels, len_D))
+#
+#         self.CARS = {}
+#         self.CARS[1] = self.gen_rules(F_1, len_D)
+#
+#         F = {}
+#         F[1] = F_1
+#         #         print(F)
+#         while len(F[k]) != 0:
+#             k += 1
+#             # Includes generating candidate itemset and finding frequent itemset
+#             F[k] = self.gen_itemset(F[k - 1], df, target_col)
+#
+#             # Build rules from frequent itemset by checking the min_conf
+#             self.CARS[k] = self.gen_rules(F[k], len_D)
+#             # Pruning rules
+#             self.CARS[k] = self.prune_rules(self.CARS[k], self.CARS[k - 1])
+#             print('CARS:', k)
+#             print(len(self.CARS[k]))
+#             print(len(F[k]))
+#
+#     def convert_to_rule_items(self, x, condset, class_label, len_D):
+#
+#         condset = frozendict(condset)
+#         class_count = {}
+#         # When label don't exist in group
+#         for label in class_label:
+#             if label not in x:
+#                 class_count[label] = 0
+#             else:
+#                 class_count[label] = x[label]
+#         major_class = max(class_count, key=lambda x: class_count[x])
+#
+#         # Removing non frequent itemset
+#         if (class_count[major_class] / float(len_D)) < self.min_sup:
+#             return {}
+#
+#         return {condset: (major_class, class_count)}
+#
+#     def gen_rules(self, F_k, len_D):
+#
+#         rules = {}
+#
+#         for condset, (major_class, class_count) in F_k.items():
+#
+#             conf = class_count[major_class] / float(sum(class_count.values()))
+#
+#             if conf > self.min_conf:
+#                 # Checking if the support are the same for all classes
+#                 if set(class_count.values()) == 1:
+#                     # Choose a random class
+#                     major_class = random.choice(class_count.keys())
+#
+#                 rules[condset] = (major_class, class_count)
+#
+#         return rules
+#
+#     def gen_itemset(self, F, df, target_col):
+#         F_new = {}
+#         len_D = len(df)
+#         condset = list(F.keys())
+#         class_labels = df[target_col].unique()
+#         for i in range(len(condset)):
+#             cond = condset[i]
+#             temp = df.copy()
+#             groupby = dict(cond)
+#             for item in cond.items():
+#                 value = item[1]
+#                 col = item[0]
+#                 temp = temp[temp[col] == value]
+#
+#             for j in range(i + 1, len(condset)):
+#                 itemset = condset[j]
+#                 # Line 20 to 25 is the Apriori principle, where we merge 2 frequent superset into a candidate key
+#                 # Checking if 2 itemsets differ only by 2 conditions
+#                 itemset_keys = itemset.keys()
+#                 cond_keys = cond.keys()
+#                 if len(set(itemset_keys) - set(cond_keys)) == 1 and len(set(itemset.items()) ^ set(cond.items())) == 2:
+#                     variable = (set(itemset_keys) - set(cond_keys)).pop()
+#                     value = itemset.get(variable)
+#
+#                     # Candidate generation
+#                     temp_2 = temp[temp[variable] == value]
+#                     groupby[variable] = value
+#
+#                     # Calculating frequency
+#                     # TODO: Can be optimize further as we already filtered out the candidate, hence only need groupby class but this will affect convert_to_rule_items
+#                     #                     group = temp_2.groupby(by=groupby).size().unstack(level=-1).reset_index()
+#                     #                     group = group.fillna(0)
+#                     temp_2 = temp_2[target_col].value_counts()
+#                     # Converting candidates in frequent itemset
+#                     F_new.update(self.convert_to_rule_items(temp_2, groupby, class_labels, len_D))
+#
+#         #         print(F_new)
+#         return F_new
+#
+#     def prune_rules(self, r, r_):
+#         # r and r_ is a python dict
+#         to_remove = []
+#         for superset in r.keys():
+#             # superset is a frozendict
+#             superset_set = set(superset.items())
+#             superset_value = r[superset]
+#
+#             for subset in r_.keys():
+#                 # subset is a frozendict
+#                 subset_set = set(subset.items())
+#
+#                 if subset_set < superset_set:
+#                     subset_value = r_[subset]
+#
+#                     superset_class = superset_value[0]
+#                     superset_error = superset_value[1][superset_class] / sum(superset_value[1].values())
+#
+#                     subset_class = subset_value[0]
+#                     subset_error = subset_value[1][subset_class] / sum(subset_value[1].values())
+#
+#                     if superset_error >= subset_error:
+#                         to_remove.append(superset)
+#                         # break to as the superset has already been removed, no further testing is needed
+#                         break
+#
+#         for key in to_remove:
+#             r.pop(key)
+#         return r

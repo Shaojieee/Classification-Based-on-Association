@@ -1,67 +1,67 @@
-Favorite Color,Favorite Music Genre,Favorite Beverage,Favorite Soft Drink,Gender
-Cool,Rock,Vodka,7UP/Sprite,F
-Neutral,Hip hop,Vodka,Coca Cola/Pepsi,F
-Warm,Rock,Wine,Coca Cola/Pepsi,F
-Warm,Folk/Traditional,Whiskey,Fanta,F
-Cool,Rock,Vodka,Coca Cola/Pepsi,F
-Warm,Jazz/Blues,Doesn't drink,Fanta,F
-Cool,Pop,Beer,Coca Cola/Pepsi,F
-Warm,Pop,Whiskey,Fanta,F
-Warm,Rock,Other,7UP/Sprite,F
-Neutral,Pop,Wine,Coca Cola/Pepsi,F
-Cool,Pop,Other,7UP/Sprite,F
-Warm,Pop,Other,7UP/Sprite,F
-Warm,Pop,Wine,7UP/Sprite,F
-Warm,Electronic,Wine,Coca Cola/Pepsi,F
-Cool,Rock,Beer,Coca Cola/Pepsi,F
-Warm,Jazz/Blues,Wine,Coca Cola/Pepsi,F
-Cool,Pop,Wine,7UP/Sprite,F
-Cool,Rock,Other,Coca Cola/Pepsi,F
-Cool,Rock,Other,Coca Cola/Pepsi,F
-Cool,Pop,Doesn't drink,7UP/Sprite,F
-Cool,Pop,Beer,Fanta,F
-Warm,Jazz/Blues,Whiskey,Fanta,F
-Cool,Rock,Vodka,Coca Cola/Pepsi,F
-Warm,Pop,Other,Coca Cola/Pepsi,F
-Cool,Folk/Traditional,Whiskey,7UP/Sprite,F
-Warm,R&B and soul,Whiskey,Coca Cola/Pepsi,F
-Cool,Pop,Beer,Other,F
-Cool,Pop,Doesn't drink,Other,F
-Cool,Pop,Doesn't drink,Coca Cola/Pepsi,F
-Cool,Electronic,Doesn't drink,Fanta,F
-Warm,Rock,Other,Coca Cola/Pepsi,F
-Neutral,Rock,Beer,Coca Cola/Pepsi,F
-Cool,R&B and soul,Beer,Coca Cola/Pepsi,F
-Warm,R&B and soul,Wine,Other,M
-Neutral,Hip hop,Beer,7UP/Sprite,M
-Warm,Electronic,Other,Coca Cola/Pepsi,M
-Neutral,Rock,Doesn't drink,Coca Cola/Pepsi,M
-Cool,Pop,Other,Fanta,M
-Cool,Pop,Whiskey,Fanta,M
-Warm,Rock,Vodka,7UP/Sprite,M
-Cool,Rock,Vodka,Coca Cola/Pepsi,M
-Neutral,Pop,Doesn't drink,7UP/Sprite,M
-Warm,R&B and soul,Doesn't drink,Coca Cola/Pepsi,M
-Cool,Rock,Wine,7UP/Sprite,M
-Cool,Folk/Traditional,Beer,Other,M
-Cool,Hip hop,Beer,Coca Cola/Pepsi,M
-Cool,Hip hop,Wine,Coca Cola/Pepsi,M
-Cool,R&B and soul,Whiskey,7UP/Sprite,M
-Cool,Rock,Doesn't drink,Other,M
-Warm,Hip hop,Beer,Coca Cola/Pepsi,M
-Cool,R&B and soul,Doesn't drink,Coca Cola/Pepsi,M
-Cool,Rock,Doesn't drink,Coca Cola/Pepsi,M
-Cool,Hip hop,Doesn't drink,Other,M
-Warm,Rock,Beer,Fanta,M
-Cool,Electronic,Doesn't drink,Fanta,M
-Cool,Electronic,Other,Fanta,M
-Warm,Folk/Traditional,Other,Fanta,M
-Warm,Electronic,Vodka,Fanta,M
-Warm,Jazz/Blues,Vodka,Coca Cola/Pepsi,M
-Cool,Pop,Whiskey,Other,M
-Cool,Electronic,Whiskey,Coca Cola/Pepsi,M
-Cool,Rock,Vodka,Coca Cola/Pepsi,M
-Cool,Hip hop,Beer,Coca Cola/Pepsi,M
-Neutral,Hip hop,Doesn't drink,Fanta,M
-Cool,Rock,Wine,Coca Cola/Pepsi,M
-Cool,Electronic,Beer,Coca Cola/Pepsi,M
+,Favorite Color,Favorite Music Genre,Favorite Beverage,Favorite Soft Drink,Gender
+0,Cool,Rock,Vodka,7UP/Sprite,F
+1,Neutral,Hip hop,Vodka,Coca Cola/Pepsi,F
+2,Warm,Rock,Wine,Coca Cola/Pepsi,F
+3,Warm,Folk/Traditional,Whiskey,Fanta,F
+4,Cool,Rock,Vodka,Coca Cola/Pepsi,F
+5,Warm,Jazz/Blues,Doesn't drink,Fanta,F
+6,Cool,Pop,Beer,Coca Cola/Pepsi,F
+7,Warm,Pop,Whiskey,Fanta,F
+8,Warm,Rock,Other,7UP/Sprite,F
+9,Neutral,Pop,Wine,Coca Cola/Pepsi,F
+10,Cool,Pop,Other,7UP/Sprite,F
+11,Warm,Pop,Other,7UP/Sprite,F
+12,Warm,Pop,Wine,7UP/Sprite,F
+13,Warm,Electronic,Wine,Coca Cola/Pepsi,F
+14,Cool,Rock,Beer,Coca Cola/Pepsi,F
+15,Warm,Jazz/Blues,Wine,Coca Cola/Pepsi,F
+16,Cool,Pop,Wine,7UP/Sprite,F
+17,Cool,Rock,Other,Coca Cola/Pepsi,F
+18,Cool,Rock,Other,Coca Cola/Pepsi,F
+19,Cool,Pop,Doesn't drink,7UP/Sprite,F
+20,Cool,Pop,Beer,Fanta,F
+21,Warm,Jazz/Blues,Whiskey,Fanta,F
+22,Cool,Rock,Vodka,Coca Cola/Pepsi,F
+23,Warm,Pop,Other,Coca Cola/Pepsi,F
+24,Cool,Folk/Traditional,Whiskey,7UP/Sprite,F
+25,Warm,R&B and soul,Whiskey,Coca Cola/Pepsi,F
+26,Cool,Pop,Beer,Other,F
+27,Cool,Pop,Doesn't drink,Other,F
+28,Cool,Pop,Doesn't drink,Coca Cola/Pepsi,F
+29,Cool,Electronic,Doesn't drink,Fanta,F
+30,Warm,Rock,Other,Coca Cola/Pepsi,F
+31,Neutral,Rock,Beer,Coca Cola/Pepsi,F
+32,Cool,R&B and soul,Beer,Coca Cola/Pepsi,F
+33,Warm,R&B and soul,Wine,Other,M
+34,Neutral,Hip hop,Beer,7UP/Sprite,M
+35,Warm,Electronic,Other,Coca Cola/Pepsi,M
+36,Neutral,Rock,Doesn't drink,Coca Cola/Pepsi,M
+37,Cool,Pop,Other,Fanta,M
+38,Cool,Pop,Whiskey,Fanta,M
+39,Warm,Rock,Vodka,7UP/Sprite,M
+40,Cool,Rock,Vodka,Coca Cola/Pepsi,M
+41,Neutral,Pop,Doesn't drink,7UP/Sprite,M
+42,Warm,R&B and soul,Doesn't drink,Coca Cola/Pepsi,M
+43,Cool,Rock,Wine,7UP/Sprite,M
+44,Cool,Folk/Traditional,Beer,Other,M
+45,Cool,Hip hop,Beer,Coca Cola/Pepsi,M
+46,Cool,Hip hop,Wine,Coca Cola/Pepsi,M
+47,Cool,R&B and soul,Whiskey,7UP/Sprite,M
+48,Cool,Rock,Doesn't drink,Other,M
+49,Warm,Hip hop,Beer,Coca Cola/Pepsi,M
+50,Cool,R&B and soul,Doesn't drink,Coca Cola/Pepsi,M
+51,Cool,Rock,Doesn't drink,Coca Cola/Pepsi,M
+52,Cool,Hip hop,Doesn't drink,Other,M
+53,Warm,Rock,Beer,Fanta,M
+54,Cool,Electronic,Doesn't drink,Fanta,M
+55,Cool,Electronic,Other,Fanta,M
+56,Warm,Folk/Traditional,Other,Fanta,M
+57,Warm,Electronic,Vodka,Fanta,M
+58,Warm,Jazz/Blues,Vodka,Coca Cola/Pepsi,M
+59,Cool,Pop,Whiskey,Other,M
+60,Cool,Electronic,Whiskey,Coca Cola/Pepsi,M
+61,Cool,Rock,Vodka,Coca Cola/Pepsi,M
+62,Cool,Hip hop,Beer,Coca Cola/Pepsi,M
+63,Neutral,Hip hop,Doesn't drink,Fanta,M
+64,Cool,Rock,Wine,Coca Cola/Pepsi,M
+65,Cool,Electronic,Beer,Coca Cola/Pepsi,M
