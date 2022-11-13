@@ -10,6 +10,8 @@ class Adaboost:
         self.models = []
         self.stumps = {}
 
+    # Train T number of CBA_CB that only has rules of 1 item (Weak Trees)
+    # After training 1 tree, the weights of each row in the dataset will be rebalanced so that the next tree will be more likely to train on samples that are getting wrongly predicted
     def train(self, train_df, target_col, min_sup=0.01, min_conf=0.5):
         weights = np.ones(len(train_df)) / len(train_df)
         train_variables = list(train_df.columns)
