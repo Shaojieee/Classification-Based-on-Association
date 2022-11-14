@@ -188,7 +188,7 @@ class RuleGenerator:
 
     # Function for Rule Generator to find CARS for the df
     # target_col is the name of the target column in the df
-    def generate_rules(self, df, target_col):
+    def generate_rules(self, df, target_col, prune_rules=True):
         len_D = len(df)
         class_labels = df[target_col].unique()
         variables = list(df.columns)
@@ -221,11 +221,12 @@ class RuleGenerator:
             # Build rules from frequent itemset by checking the min_conf
             self.CARS[k] = self.gen_rules(F[k], len_D)
             # Pruning rules by comparing CARS of length k with CARS of length k-1
-            self.CARS[k] = self.prune_rules(self.CARS[k], self.CARS[k - 1])
+            if prune_rules:
+                self.CARS[k] = self.prune_rules(self.CARS[k], self.CARS[k - 1])
             # print('CARS:', k)
             # print(len(self.CARS[k]))
             # print(len(F[k]))
-
+        print(f'Total number of CARS in CBA-RG: {sum([len(x) for x in self.CARS.values()])}')
 
     # Convert the results from pandas into the frequent itemset data structure
     # x is a dataframe(TODO: Check x datatype)
