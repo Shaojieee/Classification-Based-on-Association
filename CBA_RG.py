@@ -226,7 +226,6 @@ class RuleGenerator:
             # print('CARS:', k)
             # print(len(self.CARS[k]))
             # print(len(F[k]))
-        print(f'Total number of CARS in CBA-RG: {sum([len(x) for x in self.CARS.values()])}')
 
     # Convert the results from pandas into the frequent itemset data structure
     # x is a dataframe(TODO: Check x datatype)
