@@ -25,7 +25,7 @@ def main():
         train_df, test_df = train_test_split(data, test_size=0.1, random_state=42)
         start = time.time()
         rule_gen = RuleGenerator(min_sup=0.01, min_conf=0.5)
-        rule_gen.generate_rules(train_df, target_col)
+        rule_gen.generate_rules(train_df, target_col, prune_rules=True)
 
         classifier = Classifier(rule_gen)
         classifier.build_classifier(train_df, target_col)
@@ -50,7 +50,7 @@ def main():
 
         # adaboost = Adaboost(T=70)
         # start = time.time()
-        # adaboost.train(train_df, target_col)
+        # adaboost.train(train_df, target_col, prune_rules=True)
         # end = time.time()
         # adaboost_train_ans = adaboost.predict(train_df)
         # adaboost_test_ans = adaboost.predict(test_df)
