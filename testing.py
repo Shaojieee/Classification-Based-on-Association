@@ -26,7 +26,7 @@ def main():
         start = time.time()
         rule_gen = RuleGenerator(min_sup=0.01, min_conf=0.5)
         rule_gen.generate_rules(train_df, target_col, prune_rules=True)
-
+        print(f'Total number of CARS in CBA-RG: {sum([len(x) for x in rule_gen.CARS.values()])}')
         classifier = Classifier(rule_gen)
         classifier.build_classifier(train_df, target_col)
         end = time.time()
