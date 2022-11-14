@@ -12,7 +12,7 @@ class Adaboost:
 
     # Train T number of CBA_CB that only has rules of 1 item (Weak Trees)
     # After training 1 tree, the weights of each row in the dataset will be rebalanced so that the next tree will be more likely to train on samples that are getting wrongly predicted
-    def train(self, train_df, target_col, min_sup=0.01, min_conf=0.5):
+    def train(self, train_df, target_col, min_sup=0.01, min_conf=0.5, prune_rules=True):
         weights = np.ones(len(train_df)) / len(train_df)
         train_variables = list(train_df.columns)
         train_variables.remove(target_col)
@@ -25,7 +25,7 @@ class Adaboost:
             for variable in train_variables:
                 stump_df = temp_df[[variable, target_col]]
                 rule_gen = RuleGenerator(min_sup=min_sup, min_conf=min_conf)
-                rule_gen.generate_rules(stump_df, target_col)
+                rule_gen.generate_rules(stump_df, target_col, prune_rules)
                 classifier = Classifier(rule_gen)
                 classifier.build_classifier(stump_df, target_col)
 
