@@ -10,9 +10,10 @@ class Adaboost:
         self.models = []
         self.stumps = {}
 
-    # Train T number of CBA_CB that only has rules of 1 item (Weak Trees)
+    # Train T number of CBA_CB that only has rules with 1 item (Weak Trees)
     # After training 1 tree, the weights of each row in the dataset will be rebalanced so that the next tree will be more likely to train on samples that are getting wrongly predicted
     def train(self, train_df, target_col, min_sup=0.01, min_conf=0.5, prune_rules=True):
+        # Initalise equal weights for each training sample
         weights = np.ones(len(train_df)) / len(train_df)
         train_variables = list(train_df.columns)
         train_variables.remove(target_col)
@@ -26,6 +27,7 @@ class Adaboost:
             for variable in train_variables:
                 stump_df = temp_df[[variable, target_col]]
                 rule_gen = RuleGenerator(min_sup=min_sup, min_conf=min_conf)
+                #Generating rules of 1 item
                 rule_gen.generate_rules(stump_df,target_col)
                 total_CARs += sum([len(x) for x in rule_gen.CARS.values()])
                 classifier = Classifier(rule_gen)
@@ -35,6 +37,8 @@ class Adaboost:
                 # For case if no rules generated
                 if len(classifier.rules) == 0:
                     continue
+
+                # call the predict method and calculate the accuracy on the training data
                 ans = classifier.predict(train_df[[variable, target_col]])
                 ans['correct'] = (ans[target_col] == ans['prediction'])
                 acc = len(ans[ans['correct'] == True]) / len(ans)
@@ -47,11 +51,17 @@ class Adaboost:
             ans = max_acc_variable[1]['model'].predict(train_df[[max_acc_variable[0], target_col]])
             ans['wrong'] = (ans[target_col] != ans['prediction'])
 
+            #Calculate the weighted misclassification error from the prediction earlier
             error = np.dot(weights, (ans['wrong'])) / sum(weights)
+
+            # Use the error score to weigh the current tree in the final classifier
             alpha = np.log((1 - error) / error)
 
+            # Use misclassification error and tree weight to reweight the training data
             weights = weights * np.exp(alpha * ans['wrong'])
             weights = weights / sum(weights)
+
+            # Save the current model as it will be used in the final prediction, predictions from more accurate models holds more weight
             self.models.append({'alpha': alpha, 'model': max_acc_variable[1]['model'], 'variable': max_acc_variable[0]})
 
         # print(f'Total Number of rules in adaboost {self.T} trees: {sum([len(x["model"].rules) for x in self.models])}')
@@ -68,6 +78,7 @@ class Adaboost:
             if classes:
                 ans = ans.join(pd.DataFrame(columns=list(classes)))
                 ans = ans.fillna(0)
+            # Prediction from more accurate models carries more weight --> Larger alpha value
             ans = ans + pd.get_dummies(temp['prediction']) * model['alpha']
         ans['prediction'] = ans.idxmax(axis='columns')
         ans = test_df.merge(ans, left_index=True, right_index=True)

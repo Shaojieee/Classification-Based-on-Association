@@ -24,7 +24,7 @@ class RuleGenerator:
         variables.remove(target_col)
         k = 1
         F_1 = {}
-        # Iterating through each column in the dataframe
+        # Iterating through each column in the dataframe aka iterating through rules with only one item
         for variable in variables:
             unique_values = df[variable].unique()
             # Iterating through all unique values for the current column
@@ -36,7 +36,7 @@ class RuleGenerator:
                 F_1.update(self.convert_to_rule_items(temp, {variable: unique_value}, class_labels, len_D))
 
         self.CARS = {}
-        # Removes non frequent itemset from the dictionary
+        # Filtering frequent itemsets that are lower than the min.conf level
         self.CARS[1] = self.gen_rules(F_1, len_D)
 
         # F is the dicionary of frequent itemset
@@ -57,7 +57,7 @@ class RuleGenerator:
             # print(len(self.CARS[k]))
             # print(len(F[k]))
 
-    # Convert the results from pandas into the frequent itemset data structure
+    # Convert the results from pandas into the frequent itemset data structure and remove non-frequent itemsets
     # x is a dataframe(TODO: Check x datatype)
     def convert_to_rule_items(self, x, condset, class_label, len_D):
 
@@ -77,8 +77,8 @@ class RuleGenerator:
 
         return {condset: (major_class, class_count)}
 
-    # Using the frequent itemset and the occurance in the dataset to generate rules by filtering out frequent itemsets that do not meet the min_conf
-    def gen_rules(self, F_k, len_D):
+    # Removing those frequent itemsets which has confidence level below min.confidence level
+    def gen_rules(self, F_k):
 
         rules = {}
 
@@ -96,11 +96,11 @@ class RuleGenerator:
 
         return rules
 
-    # Using the frequent itemset of length k-1, find the candidate itemsets of length k and find those that are frequent by checking against the min_sup
+    # Generate candidate itemsets of length k from frequent itemsets of length k-1
     def gen_itemset(self, F, df, target_col):
         F_new = {}
         len_D = len(df)
-        # All frequent itemsets of length k-1
+        # Pass all frequent itemsets of length k-1 into a list
         condset = list(F.keys())
         class_labels = df[target_col].unique()
 
@@ -110,13 +110,13 @@ class RuleGenerator:
             temp = df.copy()
             cur_itemset = dict(cond)
 
-            # Filter the dataframe to obtain those that fulfil the current frequent itemset
+            # Filter the dataframe to obtain those rows that has current frequent itemset (i)
             for item in cond.items():
                 value = item[1]
                 col = item[0]
                 temp = temp[temp[col] == value]
 
-            # For other frequent itemsets(j) of length k-1, check if itemset i and itemset j can be combined to form a candidate itemset
+            # For all the other frequent itemsets(j) of length k-1, check if itemset i and itemset j can be combined to form a candidate itemset
             for j in range(i + 1, len(condset)):
                 itemset = condset[j]
                 itemset_keys = itemset.keys()
@@ -167,10 +167,11 @@ class RuleGenerator:
                     subset_error = subset_value[1][subset_class] / sum(subset_value[1].values())
 
                     if superset_error >= subset_error:
+                        # Add the corresponding key into the to remove_list
                         to_remove.append(superset)
                         # break to as the superset has already been removed, no further testing is needed
                         break
-
+        # Remove these rules based on the keys added into the remove list 
         for key in to_remove:
             r.pop(key)
         return r

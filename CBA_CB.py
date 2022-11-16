@@ -6,19 +6,20 @@ import random
 
 class Classifier:
 
+    # Takes in an instance of RuleGenerator Class 
     def __init__(self, rule_builder):
         self.rule_builder = rule_builder
         self.rules = None
         self.sorted_CARS = None
 
-    # Sort the rules obtained from the rule builder based on importance
+    # Sort the rules obtained from the RuleGenerator class based on importance
     def sort_rules(self, len_D):
         sorted_CARS = []
         for values in self.rule_builder.CARS.values():
             sorted_CARS.extend(list(values.items()))
         self.sorted_CARS = sorted(sorted_CARS, key=lambda x: (x[1][1][x[1][0]] / sum(x[1][1].values()), x[1][1][x[1][0]] / len_D, len(x[0])), reverse=True)
 
-    # Build the classifier by iterating through the sorted rules to come out with the final rules that will be used in prediction
+    # Iterating through the sorted rules to come out with the final rules that will be used in prediction
     def build_classifier(self, df, target_col):
         len_D = len(df)
         self.sort_rules(len_D)
@@ -47,8 +48,9 @@ class Classifier:
                          'class': (len(cond_df) - len(correct))}
                 rules.append([CARS, default_class, total_error, error])
 
-        #Find the rule which results in least number of wrong predictions
+        #Find the index of the rule which results in least number of wrong predictions
         lowest_error_id = np.argmin([x[2] for x in rules])
+        # Drop all rules after this index
         pruned_rules = rules[:lowest_error_id + 1]
         self.rules = pruned_rules
         # print('Total number of rules in classifier')
