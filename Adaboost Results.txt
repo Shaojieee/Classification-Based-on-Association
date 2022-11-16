@@ -1,0 +1,120 @@
+==============================
+For ./data/breast_w/clean_breast_w.csv
+ADABOOST
+Train
+True     598
+False     16
+Name: correct, dtype: int64
+Accuracy: 0.9739413680781759
+Test
+True     66
+False     3
+Name: correct, dtype: int64
+Accuracy: 0.9565217391304348
+Total Fit Time: 21.35281205177307
+==============================
+==============================
+For ./data/german/clean_german.csv
+ADABOOST
+Train
+True     629
+False    271
+Name: correct, dtype: int64
+Accuracy: 0.6988888888888889
+Test
+True     71
+False    29
+Name: correct, dtype: int64
+Accuracy: 0.71
+Total Fit Time: 26.26136326789856
+==============================
+==============================
+For ./data/zoo/clean_zoo.csv
+ADABOOST
+Train
+True     59
+False    31
+Name: correct, dtype: int64
+Accuracy: 0.6555555555555556
+Test
+True     8
+False    3
+Name: correct, dtype: int64
+Accuracy: 0.7272727272727273
+Total Fit Time: 7.287685871124268
+==============================
+==============================
+For ./data/tic_tac_toe/clean_tic-tac-toe.csv
+ADABOOST
+Train
+True     565
+False    297
+Name: correct, dtype: int64
+Accuracy: 0.6554524361948956
+Test
+True     61
+False    35
+Name: correct, dtype: int64
+Accuracy: 0.6354166666666666
+Total Fit Time: 9.588208198547363
+==============================
+==============================
+For ./data/hepatitis/clean_hepatitis.csv
+ADABOOST
+Train
+True     60
+False    12
+Name: correct, dtype: int64
+Accuracy: 0.8333333333333334
+Test
+True     7
+False    1
+Name: correct, dtype: int64
+Accuracy: 0.875
+Total Fit Time: 16.08258295059204
+==============================
+==============================
+For ./data/mobile/clean_mobile.csv
+ADABOOST
+Train
+True     1136
+False     664
+Name: correct, dtype: int64
+Accuracy: 0.6311111111111111
+Test
+True     128
+False     72
+Name: correct, dtype: int64
+Accuracy: 0.64
+Total Fit Time: 6.232730150222778
+==============================
+==============================
+For ./data/stroke/clean_stroke.csv
+ADABOOST
+Train
+True     873
+False    103
+Name: correct, dtype: int64
+Accuracy: 0.8944672131147541
+Test
+True     96
+False    13
+Name: correct, dtype: int64
+Accuracy: 0.8807339449541285
+Total Fit Time: 10.835856199264526
+==============================
+==============================
+For ./data/gender/gender.csv
+ADABOOST
+Train
+True     38
+False    21
+Name: correct, dtype: int64
+Accuracy: 0.6440677966101694
+Test
+True     5
+False    2
+Name: correct, dtype: int64
+Accuracy: 0.7142857142857143
+Total Fit Time: 5.497684955596924
+==============================

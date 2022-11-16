@@ -18,6 +18,7 @@ class Adaboost:
         train_variables.remove(target_col)
         for t in range(self.T):
             self.stumps[t] = {}
+            total_CARs = 0
             if t != 0:
                 temp_df = train_df.sample(frac=1, replace=True, weights=weights, random_state=42)
             else:
@@ -25,6 +26,7 @@ class Adaboost:
             for variable in train_variables:
                 stump_df = temp_df[[variable, target_col]]
                 rule_gen = RuleGenerator(min_sup=min_sup, min_conf=min_conf)
+                rule_gen.generate_rules(stump_df,target_col)
                 total_CARs += sum([len(x) for x in rule_gen.CARS.values()])
                 classifier = Classifier(rule_gen)
                 classifier.build_classifier(stump_df, target_col)
@@ -52,7 +54,7 @@ class Adaboost:
             weights = weights / sum(weights)
             self.models.append({'alpha': alpha, 'model': max_acc_variable[1]['model'], 'variable': max_acc_variable[0]})
 
-        print(f'Total Number of rules in adaboost {self.T} trees: {sum([len(x["model"].rules) for x in self.models])}')
+        # print(f'Total Number of rules in adaboost {self.T} trees: {sum([len(x["model"].rules) for x in self.models])}')
         
         return self
 

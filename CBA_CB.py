@@ -25,6 +25,7 @@ class Classifier:
         temp_df = df
         rules = []
 
+        #Handle the case where no CARS were generated
         if len(self.sorted_CARS)==0:
             # print('No CARS from rule generator!')
             self.rules = []
@@ -34,6 +35,7 @@ class Classifier:
             cond_df = temp_df.loc[(temp_df[list(cond)] == pd.Series(cond)).all(axis=1)]
             correct = cond_df[cond_df[target_col] == result[0]]
 
+            # Add the rules that results in at least one correct prediction
             if len(correct) != 0:
                 temp_df = temp_df.drop(index=cond_df.index)
                 if len(temp_df) == 0:
@@ -45,11 +47,12 @@ class Classifier:
                          'class': (len(cond_df) - len(correct))}
                 rules.append([CARS, default_class, total_error, error])
 
+        #Find the rule which results in least number of wrong predictions
         lowest_error_id = np.argmin([x[2] for x in rules])
         pruned_rules = rules[:lowest_error_id + 1]
         self.rules = pruned_rules
-        print('Total number of rules in classifier')
-        print(len(self.rules))
+        # print('Total number of rules in classifier')
+        # print(len(self.rules))
 
     # Make predictions using the rules in self.rules
     def predict(self, df):

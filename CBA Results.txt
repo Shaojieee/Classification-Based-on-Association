@@ -1,0 +1,139 @@
+Total number of CARS in CBA-RG: 2333
+Total number of rules in classifier
+66
+==============================
+For ./data/breast_w/clean_breast_w.csv
+Single Classifier
+Train
+True     609
+False      5
+Name: correct, dtype: int64
+Accuracy: 0.99185667752443
+Test
+True     66
+False     3
+Name: correct, dtype: int64
+Accuracy: 0.9565217391304348
+Total Fit Time: 20.2227680683136
+==============================
+Total number of CARS in CBA-RG: 11370
+Total number of rules in classifier
+202
+==============================
+For ./data/german/clean_german.csv
+Single Classifier
+Train
+True     802
+False     98
+Name: correct, dtype: int64
+Accuracy: 0.8911111111111111
+Test
+True     70
+False    30
+Name: correct, dtype: int64
+Accuracy: 0.7
+Total Fit Time: 371.9727690219879
+==============================
+Total number of CARS in CBA-RG: 5538
+Total number of rules in classifier
+7
+==============================
+For ./data/zoo/clean_zoo.csv
+Single Classifier
+Train
+True    90
+Name: correct, dtype: int64
+Accuracy: 1.0
+Test
+True    11
+Name: correct, dtype: int64
+Accuracy: 1.0
+Total Fit Time: 356.2768518924713
+==============================
+Total number of CARS in CBA-RG: 2795
+Total number of rules in classifier
+8
+==============================
+For ./data/tic_tac_toe/clean_tic-tac-toe.csv
+Single Classifier
+Train
+True    862
+Name: correct, dtype: int64
+Accuracy: 1.0
+Test
+True    96
+Name: correct, dtype: int64
+Accuracy: 1.0
+Total Fit Time: 43.339350938797
+==============================
+Total number of CARS in CBA-RG: 9094
+Total number of rules in classifier
+9
+==============================
+For ./data/hepatitis/clean_hepatitis.csv
+Single Classifier
+Train
+True    72
+Name: correct, dtype: int64
+Accuracy: 1.0
+Test
+True     7
+False    1
+Name: correct, dtype: int64
+Accuracy: 0.875
+Total Fit Time: 239.8802671432495
+==============================
+Total number of CARS in CBA-RG: 14244
+Total number of rules in classifier
+319
+==============================
+For ./data/mobile/clean_mobile.csv
+Single Classifier
+Train
+True     1504
+False     296
+Name: correct, dtype: int64
+Accuracy: 0.8355555555555556
+Test
+True     152
+False     48
+Name: correct, dtype: int64
+Accuracy: 0.76
+Total Fit Time: 1136.9304008483887
+==============================
+Total number of CARS in CBA-RG: 7862
+Total number of rules in classifier
+148
+==============================
+For ./data/stroke/clean_stroke.csv
+Single Classifier
+Train
+True     878
+False     98
+Name: correct, dtype: int64
+Accuracy: 0.8995901639344263
+Test
+True     95
+False    14
+Name: correct, dtype: int64
+Accuracy: 0.8715596330275229
+Total Fit Time: 143.13808178901672
+==============================
+Total number of CARS in CBA-RG: 159
+Total number of rules in classifier
+36
+==============================
+For ./data/gender/gender.csv
+Single Classifier
+Train
+True     57
+False     2
+Name: correct, dtype: int64
+Accuracy: 0.9661016949152542
+Test
+False    4
+True     3
+Name: correct, dtype: int64
+Accuracy: 0.42857142857142855
+Total Fit Time: 0.5918841361999512
+==============================
