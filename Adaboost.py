@@ -64,7 +64,7 @@ class Adaboost:
             # Save the current model as it will be used in the final prediction, predictions from more accurate models holds more weight
             self.models.append({'alpha': alpha, 'model': max_acc_variable[1]['model'], 'variable': max_acc_variable[0]})
 
-        # print(f'Total Number of rules in adaboost {self.T} trees: {sum([len(x["model"].rules) for x in self.models])}')
+        print(f'Total Number of rules in adaboost {self.T} trees: {sum([len(x["model"].rules) for x in self.models])}')
         
         return self
 

@@ -1,5 +1,3 @@
-import pandas as pd
-import numpy as np
 from frozendict import frozendict
 import random
 
@@ -37,7 +35,7 @@ class RuleGenerator:
 
         self.CARS = {}
         # Filtering frequent itemsets that are lower than the min.conf level
-        self.CARS[1] = self.gen_rules(F_1, len_D)
+        self.CARS[1] = self.gen_rules(F_1)
 
         # F is the dicionary of frequent itemset
         F = {}
@@ -49,7 +47,7 @@ class RuleGenerator:
             if len(F[k])>=40000:
                 break
             # Build rules from frequent itemset by checking the min_conf
-            self.CARS[k] = self.gen_rules(F[k], len_D)
+            self.CARS[k] = self.gen_rules(F[k])
             # Pruning rules by comparing CARS of length k with CARS of length k-1
             if prune_rules:
                 self.CARS[k] = self.prune_rules(self.CARS[k], self.CARS[k - 1])
